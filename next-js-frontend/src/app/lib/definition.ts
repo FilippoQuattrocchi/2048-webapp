@@ -8,3 +8,12 @@ export type Invoice = {
 	status: "pending" | "paid";
 };
 
+export type Position = {
+	row: number;
+	col: number;
+}
+
+export type Move = "up" | "down" | "left" | "right";
+
+export type GameMatrix = number[][];
+

@@ -1,14 +1,15 @@
 "use client";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import { DEFAULT_SIZE_GRID } from "../lib/default-values";
+import { DEFAULT_SIZE_GRID } from "../lib/Default-values";
 import Cell from "./Cell";
+import { checkAvaibleCells } from "../lib/Game";
 
 type Props = {
 	matrixCellValues: number[][];
+	requestedUpdate: boolean;
 };
 
-const Matrix = ({ matrixCellValues }: Props) => {
-	const [useCellMatrix, setCellMatrix] = useState(matrixCellValues);
+const Matrix = ({ matrixCellValues, requestedUpdate }: Props) => {
 	const [useCellElements, setCellElements] = useState<JSX.Element[][]>([]);
 
 	useEffect(() => {
@@ -18,14 +19,14 @@ const Matrix = ({ matrixCellValues }: Props) => {
 			const colElement = [];
 			for (let col = 0; col < DEFAULT_SIZE_GRID; col++) {
 				colElement.push(
-					<Cell value={useCellMatrix[row][col]} key={counterKey}></Cell>
+					<Cell value={matrixCellValues[row][col]} key={counterKey}></Cell>
 				);
 				counterKey += 1;
 			}
 			cellElementsTemp.push(colElement);
 		}
 		setCellElements(cellElementsTemp);
-	}, [matrixCellValues]);
+	}, [requestedUpdate]);
 
 	return (
 		<>
