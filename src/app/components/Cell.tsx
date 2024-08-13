@@ -5,7 +5,7 @@ type Props = {
 const Cell = ({value}: Props) => {
 
     return (
-        <div>{value}</div>
+        <div className="bg-slate-400 text-center">{value}</div>
     );
 
 }

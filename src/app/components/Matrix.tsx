@@ -1,5 +1,5 @@
-'use client'
-import { useEffect, useState } from "react";
+"use client";
+import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import { DEFAULT_SIZE_GRID } from "../lib/default-values";
 import Cell from "./Cell";
 
@@ -13,10 +13,14 @@ const Matrix = ({ matrixCellValues }: Props) => {
 
 	useEffect(() => {
 		let cellElementsTemp = [];
+		let counterKey = 0;
 		for (let row = 0; row < DEFAULT_SIZE_GRID; row++) {
 			const colElement = [];
 			for (let col = 0; col < DEFAULT_SIZE_GRID; col++) {
-				colElement.push(<Cell value={useCellMatrix[row][col]}></Cell>);
+				colElement.push(
+					<Cell value={useCellMatrix[row][col]} key={counterKey}></Cell>
+				);
+				counterKey += 1;
 			}
 			cellElementsTemp.push(colElement);
 		}
