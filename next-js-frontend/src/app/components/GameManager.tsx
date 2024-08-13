@@ -21,10 +21,10 @@ const GameManager = () => {
 	const [useRefresh, setRefresh] = useState(false);
 
 	const handleNewInput = (move: Move) => {
-		const newNumberPosition = insertNewNumber(useMatrix);
-		const matrixWithMove = makeMove(useMatrix, move);
-		setMatrix(matrixWithMove);
 		if (!checkGameEnd(useMatrix)) {
+			const newNumberPosition = insertNewNumber(useMatrix);
+			const matrixWithMove = makeMove(useMatrix, move);
+			setMatrix(matrixWithMove);
 			setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition, 2));
 			setRefresh(true);
 		} else alert("Game lost");
