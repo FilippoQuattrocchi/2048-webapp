@@ -1,5 +1,5 @@
 import { GameMatrix, Move, Position } from "./Definition";
-import { randomInteger } from "./util";
+import { randomInteger } from "./Util";
 
 export const checkGameEnd = (matrix: number[][]) => {
 	if (checkAvaibleCells(matrix).length === 0) return true;

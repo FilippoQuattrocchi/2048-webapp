@@ -1,8 +1,7 @@
 "use client";
-import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { DEFAULT_SIZE_GRID } from "../lib/Default-values";
 import Cell from "./Cell";
-import { checkAvaibleCells } from "../lib/Game";
 
 type Props = {
 	matrixCellValues: number[][];
