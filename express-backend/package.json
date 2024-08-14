@@ -8,7 +8,7 @@
 		"start": "node dist/server.js",
 		"dev": "nodemon src/server.ts",
 		"migrate": "prisma migrate dev",
-		"postmigrate": "npx @snaplet/seed sync"
+		"postmigrate": "npx prisma db seed"
 	},
 	"prisma": {
 		"seed": "ts-node prisma/seed.ts"
