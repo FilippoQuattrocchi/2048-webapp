@@ -57,7 +57,6 @@ const InputHandler = ({handleNewInput}: Props) => {
 
 	return (
 		<>
-			<p>Input handler!</p>
 		</>
 	);
 };

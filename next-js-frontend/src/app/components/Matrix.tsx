@@ -29,8 +29,7 @@ const Matrix = ({ matrixCellValues, requestedUpdate }: Props) => {
 
 	return (
 		<>
-			<p>Tabella</p>
-			<div className="flex flex-wrap mx-40 justify-items-center">
+			<div className="flex flex-wrap mx-40 justify-items-center shadow-xl">
 				{" "}
 				{useCellElements}
 			</div>

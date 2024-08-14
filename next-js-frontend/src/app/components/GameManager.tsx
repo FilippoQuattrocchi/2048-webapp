@@ -57,7 +57,6 @@ const GameManager = () => {
 				matrixCellValues={useMatrix}
 				requestedUpdate={useRefresh}
 			></Matrix>
-			<p>Game manager!</p>
 		</>
 	);
 };

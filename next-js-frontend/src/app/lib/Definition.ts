@@ -23,3 +23,5 @@ export type NumImageAssocation = {
 	[key: number]: StaticImageData
 }
 
+export type ScoreType = number;
+

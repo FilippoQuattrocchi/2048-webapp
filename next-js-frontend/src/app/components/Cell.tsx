@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { numberImageAssociation } from "../lib/Default-values";
+import styles from "./Cell.module.css";
 
 type Props = {
 	value: number;
@@ -10,7 +11,8 @@ const Cell = ({ value }: Props) => {
 
 	useEffect(() => {
 		// setValue(value);
-		const className = "bg-slate-400 justify-center items-center basis-1/4 w-20 h-48";
+		const className =
+			"justify-center items-center basis-1/4 w-20 h-48 border-4 "+ styles.game_cell;
 
 		if (numberImageAssociation[value] !== undefined) {
 			setCellElement(
