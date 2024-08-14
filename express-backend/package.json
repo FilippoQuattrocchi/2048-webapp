@@ -4,7 +4,7 @@
 	"main": "src/server.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "npx tsc",
+		"build": "npm install && npx tsc && npm run migrate && npm run postmigrate",
 		"start": "node dist/server.js",
 		"dev": "nodemon src/server.ts",
 		"migrate": "prisma migrate dev",
