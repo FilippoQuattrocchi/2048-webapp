@@ -10,15 +10,15 @@ const Cell = ({ value }: Props) => {
 
 	useEffect(() => {
 		// setValue(value);
-		const className = "bg-slate-400 flex justify-center items-center";
+		const className = "bg-slate-400 justify-center items-center basis-1/4 w-20 h-48";
 
 		if (numberImageAssociation[value] !== undefined) {
 			setCellElement(
 				<div className={className}>
 					<Image
 						src={numberImageAssociation[value]}
-						// width={100}
-						// height={100}
+						 width={180}
+						 height={180}
 						alt="Assembly"
 					></Image>
 				</div>
