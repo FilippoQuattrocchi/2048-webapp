@@ -21,7 +21,7 @@ export const checkAvaibleCells = (matrix: number[][]) => {
 	return freePosition;
 };
 
-export const insertNewNumber = (matrix: number[][]) => {
+export const getAvaiblePosition = (matrix: number[][]) => {
 	const avabileCells = checkAvaibleCells(matrix);
 	const randomNum = randomInteger(avabileCells.length);
 	return avabileCells[randomNum];
@@ -50,6 +50,19 @@ export const makeMove = (matrix: GameMatrix, moveTo: Move) => {
 	}
 };
 
+export const compareMatrix = (matrix1: GameMatrix, matrix2: GameMatrix) => {
+	for (let row = 0; row < matrix1.length; row++) {
+		for (let col = 0; col < matrix1.length; col++) {
+			if (matrix1[row][col] !== matrix2[row][col]) return false;
+		}
+	}
+	return true;
+};
+
+export const makeACopyOfMatrix = (matrix: GameMatrix) => {
+	return JSON.parse(JSON.stringify(matrix));
+};
+
 const moveUp = (matrix: GameMatrix) => {
 	const changedMatrix = matrix;
 	for (let row = matrix.length - 1; row > 0; row--) {
@@ -75,8 +88,7 @@ const moveDown = (matrix: GameMatrix) => {
 		for (let col = 0; col < matrix.length; col++) {
 			if (changedMatrix[row][col] !== 0) {
 				if (changedMatrix[row + 1][col] === changedMatrix[row][col]) {
-					changedMatrix[row + 1][col] =
-						changedMatrix[row][col] + changedMatrix[row][col];
+					changedMatrix[row + 1][col] = changedMatrix[row][col] * 2;
 					changedMatrix[row][col] = 0;
 				} else if (changedMatrix[row + 1][col] === 0) {
 					changedMatrix[row + 1][col] = changedMatrix[row][col];
@@ -98,7 +110,7 @@ const moveRight = (matrix: GameMatrix) => {
 					changedMatrix[row][col] = 0;
 				} else if (changedMatrix[row][col + 1] === 0) {
 					changedMatrix[row][col + 1] = changedMatrix[row][col];
-					changedMatrix[row][col];
+					changedMatrix[row][col] = 0;
 				}
 			}
 		}

@@ -6,7 +6,9 @@ import { DEFAULT_MATRIX_VALUES } from "../lib/Default-values";
 import {
 	changeValueOfMatrix,
 	checkGameEnd,
-	insertNewNumber,
+	compareMatrix,
+	getAvaiblePosition,
+	makeACopyOfMatrix,
 	makeMove,
 } from "../lib/Game";
 import { GameMatrix, Move } from "../lib/Definition";
@@ -21,12 +23,16 @@ const GameManager = () => {
 	const [useRefresh, setRefresh] = useState(false);
 
 	const handleNewInput = (move: Move) => {
+		//Check the state if the game is ended
 		if (!checkGameEnd(useMatrix)) {
-			const newNumberPosition = insertNewNumber(useMatrix);
+			const newNumberPosition = getAvaiblePosition(useMatrix);
+			const savedMatrixState = makeACopyOfMatrix(useMatrix);
 			const matrixWithMove = makeMove(useMatrix, move);
-			setMatrix(matrixWithMove);
-			setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition, 2));
-			setRefresh(true);
+			if (!compareMatrix(savedMatrixState, matrixWithMove)) {
+				setMatrix(matrixWithMove);
+				setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition, 2));
+				setRefresh(true);
+			}
 		} else alert("Game lost");
 	};
 
@@ -37,7 +43,12 @@ const GameManager = () => {
 	}, [useRefresh]);
 
 	//Game init
-	useEffect(() => {}, []);
+	useEffect(() => {
+		const newNumberPosition1 = getAvaiblePosition(useMatrix);
+		const newNumberPosition2 = getAvaiblePosition(useMatrix);
+		setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition1, 2));
+		setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition2, 2));
+	}, []);
 
 	return (
 		<>
