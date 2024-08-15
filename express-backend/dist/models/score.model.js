@@ -14,29 +14,39 @@ const createScore = (userId, value) => __awaiter(void 0, void 0, void 0, functio
     return yield index_1.prisma.scoreboard.create({
         data: {
             value,
-            userId
+            userId,
         },
     });
 });
 const selectAllScore = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield index_1.prisma.scoreboard.findMany();
+    return yield index_1.prisma.scoreboard.findMany({
+        orderBy: { value: "desc" },
+        take: 20,
+        include: {
+            user: true,
+        },
+    });
 });
 const getScore = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return yield index_1.prisma.scoreboard.findUnique({
-        where: { id }
+        where: { id },
     });
 });
-const updateScore = (id, value) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield index_1.prisma.scoreboard.update({
-        where: { id },
-        data: {
-            value
+const updateScore = (userId, value) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield index_1.prisma.scoreboard.upsert({
+        create: {
+            userId: userId,
+            value: value
+        },
+        where: { userId: userId },
+        update: {
+            value: value,
         },
     });
 });
 const deleteScore = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return yield index_1.prisma.scoreboard.delete({
-        where: { id }
+        where: { id },
     });
 });
 exports.default = {

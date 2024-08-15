@@ -7,7 +7,7 @@ router.get("/health", ScoreController.health);
 router.post("/create", ScoreController.createScore);
 router.get("/getall", ScoreController.getScores);
 router.get("/get/:id", ScoreController.getScore);
-router.put("/update/:id", ScoreController.updateScore);
+router.put("/update", ScoreController.updateScore);
 router.delete("/delete/:id", ScoreController.deleteScore);
 
 export default router;
