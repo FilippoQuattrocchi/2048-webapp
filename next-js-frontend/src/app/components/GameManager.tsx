@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, use, useEffect, useRef, useState } from "react";
 import InputHandler from "./InputHandler";
 import Matrix from "./Matrix";
 import { DEFAULT_MATRIX_VALUES } from "../lib/Default-values";
@@ -40,6 +40,19 @@ const GameManager = ({ updateScore }: Props) => {
 			}
 		} else alert("Game lost");
 	};
+
+	useEffect(() => {
+		const userId = localStorage.getItem("userId");
+		if (userId) {
+			try {
+				fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/score/update`, {
+					method: "PUT",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ userId, value: useScore }),
+				});
+			} catch (e) {}
+		}
+	}, [useScore]);
 
 	useEffect(() => {
 		if (useRefresh) {

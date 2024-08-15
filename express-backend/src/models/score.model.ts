@@ -24,6 +24,15 @@ const getScore = async (id: number) => {
 	});
 };
 const updateScore = async (userId: number, value: number) => {
+
+	const actuaValue = await prisma.scoreboard.findUnique({
+		where : {userId},
+	})
+
+	if (actuaValue) {
+		if(actuaValue.value > value) return actuaValue;
+	}
+
 	return await prisma.scoreboard.upsert({
 		create : {
 			userId: userId,

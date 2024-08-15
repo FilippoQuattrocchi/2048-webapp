@@ -1,7 +1,5 @@
 "use client";
 import { FormEvent, useEffect, useState } from "react";
-// import { useRouter } from "next/router";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
@@ -35,6 +33,9 @@ const Login = () => {
 		});
 
 		if (response.ok) {
+			const responseData = await response.json();
+			console.log(responseData);
+			localStorage.setItem('userId',responseData.id);
 			router.push("/");
 		} else {
 			alert("Invalid credentials");
