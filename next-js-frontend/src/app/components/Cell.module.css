@@ -1,0 +1,4 @@
+.game_cell {
+    border-color: var(--ghost-white) ;
+    background-color: var(--tomato);
+}

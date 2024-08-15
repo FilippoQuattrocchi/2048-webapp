@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export type Invoice = {
 	id: string;
 	customer_id: string;
@@ -16,4 +18,10 @@ export type Position = {
 export type Move = "up" | "down" | "left" | "right";
 
 export type GameMatrix = number[][];
+
+export type NumImageAssocation = {
+	[key: number]: StaticImageData
+}
+
+export type ScoreType = number;
 
