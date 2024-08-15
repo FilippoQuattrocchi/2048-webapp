@@ -1,7 +1,7 @@
 // src/index.js
 import express, { Express, Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
-import ScoreRouter from "./routes/score.route";
+import ScoreRouter from "../routes/score.route";
 import dotenv from "dotenv";
 
 export const prisma = new PrismaClient();
@@ -36,4 +36,4 @@ main()
 		process.exit(1);
 	});
 
-	module.exports = app;
+module.exports = app;

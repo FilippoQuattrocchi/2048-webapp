@@ -1,4 +1,4 @@
-import { prisma } from "../../api/index";
+import { prisma } from "../api/index";
 
 const createScore = async (userId: number,value: number) => {
 	return await prisma.scoreboard.create({

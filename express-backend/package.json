@@ -1,14 +1,15 @@
 {
 	"name": "express-backend",
 	"version": "1.0.0",
-	"main": "api/index.js",
+	"main": "index.ts",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "npm install && npx tsc && npm run migrate",
 		"start": "node dist/api/index.js",
-		"dev": "nodemon api/index.ts",
-		"migrate": "prisma migrate dev",
-		"postmigrate": "npx prisma db seed"
+		"dev": "nodemon src/index.ts",
+		"migrate": "npx prisma generate && prisma migrate dev",
+		"postmigrate": "npx prisma db seed",
+		"vercel-build": "prisma generate && prisma migrate deploy && tsc"
 	},
 	"prisma": {
 		"seed": "ts-node prisma/seed.ts"
