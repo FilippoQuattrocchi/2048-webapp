@@ -4,7 +4,7 @@
 	"main": "api/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "npx tsc && npm run migrate",
+		"build": "npm install && npx tsc && npm run migrate",
 		"start": "node dist/api/index.js",
 		"dev": "nodemon api/index.ts",
 		"migrate": "prisma migrate dev",
