@@ -46,26 +46,40 @@ const Login = () => {
 	return (
 		<>
 			<div>
-				<form onSubmit={handleSubmit}>
-					<input
-						type="text"
-						className="text-black"
-						name="username"
-						placeholder="Username"
-						required
-						value={useUsername}
-						onChange={handleUpdateUsername}
-					/>
-					<input
-						type="password"
-						name="password"
-						className="text-black"
-						placeholder="Password"
-						required
-						value={usePassword}
-						onChange={handleUpdatePassword}
-					/>
-					<button type="submit">Login</button>
+				<form
+					className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+					onSubmit={handleSubmit}
+				>
+					<div className="m-2">
+						<input
+							type="text"
+							className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							name="username"
+							placeholder="Username"
+							required
+							value={useUsername}
+							onChange={handleUpdateUsername}
+						/>
+					</div>
+					<div className="m-2">
+						<input
+							type="password"
+							name="password"
+							className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+							placeholder="Password"
+							required
+							value={usePassword}
+							onChange={handleUpdatePassword}
+						/>
+					</div>
+					<div className="m-2">
+						<button
+							className="flex w-full justify-center rounded-md text-black cyan-bg px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							type="submit"
+						>
+							Login
+						</button>
+					</div>
 				</form>
 			</div>
 		</>

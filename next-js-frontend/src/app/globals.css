@@ -29,6 +29,14 @@ body {
 	background: var(--jet);
 }
 
+.cyan-bg{
+	background-color: var(--process-cyan);
+}
+
+.tomato-cl {
+	color: var(--tomato);
+}
+
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
