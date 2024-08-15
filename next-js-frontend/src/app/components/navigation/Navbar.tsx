@@ -22,11 +22,6 @@ const Navbar = () => {
 									<p>Leaderboard</p>
 								</Link>
 							</li>
-							<li>
-								<Link href="/contacts">
-									<p>Contacts</p>
-								</Link>
-							</li>
 						</ul>
 						<Link href="/login">
 							<LoginButton />
