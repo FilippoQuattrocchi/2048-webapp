@@ -26,7 +26,7 @@ const Cell = ({ value }: Props) => {
 				</div>
 			);
 		} else {
-			setCellElement(<div className={className}>{value}</div>);
+			setCellElement(<div className={className}></div>);
 		}
 	}, [value]);
 

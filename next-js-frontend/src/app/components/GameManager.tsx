@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import InputHandler from "./InputHandler";
 import Matrix from "./Matrix";
 import { DEFAULT_MATRIX_VALUES } from "../lib/Default-values";
@@ -14,13 +14,16 @@ import {
 import { GameMatrix, Move } from "../lib/Definition";
 
 type Props = {
-	matrixCellValues: number[][];
+	updateScore(value: number): void;
 };
 
-const GameManager = () => {
+const GameManagerContext = createContext({});
+
+const GameManager = ({ updateScore }: Props) => {
 	const [useActualKey, setActualKey] = useState<string | null>(null);
 	const [useMatrix, setMatrix] = useState<GameMatrix>(DEFAULT_MATRIX_VALUES);
 	const [useRefresh, setRefresh] = useState(false);
+	const [useScore, setScore] = useState(0);
 
 	const handleNewInput = (move: Move) => {
 		//Check the state if the game is ended
@@ -30,6 +33,8 @@ const GameManager = () => {
 			const matrixWithMove = makeMove(useMatrix, move);
 			if (!compareMatrix(savedMatrixState, matrixWithMove)) {
 				setMatrix(matrixWithMove);
+				setScore(useScore + 10);
+				updateScore(useScore);
 				setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition, 2));
 				setRefresh(true);
 			}
@@ -47,7 +52,7 @@ const GameManager = () => {
 		const newNumberPosition1 = getAvaiblePosition(useMatrix);
 		const newNumberPosition2 = getAvaiblePosition(useMatrix);
 		setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition1, 2));
-		setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition2, 2));
+		// setMatrix(changeValueOfMatrix(useMatrix, newNumberPosition2, 2));
 	}, []);
 
 	return (
