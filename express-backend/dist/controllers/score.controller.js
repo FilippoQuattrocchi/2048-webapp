@@ -48,11 +48,11 @@ const getScore = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const updateScore = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const scoreIdString = req.params.id;
-        const scoreId = Number(scoreIdString);
+        const userIdString = req.body.userId;
+        const userId = Number(userIdString);
         const scoreValueString = req.body.value;
         const scoreValue = Number(scoreValueString);
-        const score = yield score_model_1.default.updateScore(scoreId, scoreValue);
+        const score = yield score_model_1.default.updateScore(userId, scoreValue);
         res.status(200).json(score);
     }
     catch (e) {

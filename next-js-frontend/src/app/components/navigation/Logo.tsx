@@ -37,13 +37,7 @@ const Logo = () => {
 	return (
 		<>
 			<Link href="/" style={{ display: showButton ? "none" : "block" }}>
-				<Image
-					src={LogoImg}
-					alt="Logo"
-					width={64}
-					height={64}
-					className="relative"
-				/>
+				<h1 className="text-xl text-black">Language merge</h1>
 			</Link>
 			<div
 				style={{

@@ -17,15 +17,23 @@ exports.prisma = void 0;
 const express_1 = __importDefault(require("express"));
 const client_1 = require("@prisma/client");
 const score_route_1 = __importDefault(require("../routes/score.route"));
+const auth_router_1 = __importDefault(require("../routes/auth.router"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const cors_1 = __importDefault(require("cors"));
 exports.prisma = new client_1.PrismaClient();
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
+//Cors settings
+const corsOptions = {
+    origin: process.env.NEXT_ORIGIN,
+};
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         app.use(express_1.default.json());
+        app.use((0, cors_1.default)(corsOptions));
         app.use("/api/v1/score", score_route_1.default);
+        app.use("/api/v1/auth", auth_router_1.default);
         app.get("/", (req, res) => {
             res.send("Express + TypeScript Server");
         });
@@ -46,4 +54,4 @@ main()
     yield exports.prisma.$disconnect();
     process.exit(1);
 }));
-// module.exports = app;
+module.exports = app;

@@ -8,7 +8,12 @@ const Leaderboard = async () => {
 			headers: { "Content-Type": "application/json" },
 		}
 	);
-	const data = await response.json();
+	let data: any;
+	try {
+		data = await response.json();
+	} catch (e) {
+		console.log(e);
+	}
 
 	const userList = 0;
 	const scoreboardElement = [];
@@ -33,9 +38,7 @@ const Leaderboard = async () => {
 			<div className="bg-gray-100 py-2 px-4">
 				<h2 className="text-xl font-semibold text-gray-800">Top Users</h2>
 			</div>
-			<ul className="divide-y divide-gray-200">
-				{scoreboardElement}
-			</ul>
+			<ul className="divide-y divide-gray-200">{scoreboardElement}</ul>
 		</div>
 	);
 };

@@ -35,11 +35,11 @@ const getScore = async (req: Request, res: Response) => {
 };
 const updateScore = async (req: Request, res: Response) => {
 	try {
-		const scoreIdString = req.params.id;
-		const scoreId = Number(scoreIdString);
+		const userIdString = req.body.userId;
+		const userId = Number(userIdString);
 		const scoreValueString = req.body.value;
 		const scoreValue = Number(scoreValueString);
-		const score = await ScoreModel.updateScore(scoreId, scoreValue);
+		const score = await ScoreModel.updateScore(userId, scoreValue);
 		res.status(200).json(score);
 	} catch (e) {
 		res.status(500).json({ error: e });

@@ -1,40 +1,53 @@
 import { prisma } from "../api/index";
 
-const createScore = async (userId: number,value: number) => {
+const createScore = async (userId: number, value: number) => {
 	return await prisma.scoreboard.create({
 		data: {
 			value,
-            userId
+			userId,
 		},
 	});
 };
 
 const selectAllScore = async () => {
 	return await prisma.scoreboard.findMany({
-		orderBy: {value : 'desc'},
-		take:20,
-		include : {
-			user:true
-		}
+		orderBy: { value: "desc" },
+		take: 20,
+		include: {
+			user: true,
+		},
 	});
 };
 const getScore = async (id: number) => {
-    return await prisma.scoreboard.findUnique({
-        where: { id}
-    });
+	return await prisma.scoreboard.findUnique({
+		where: { id },
+	});
 };
-const updateScore = async (id: number, value: number) => {
-    return await prisma.scoreboard.update({
-        where: {id},
-        data: {
-            value
-        },
-    })
+const updateScore = async (userId: number, value: number) => {
+
+	const actuaValue = await prisma.scoreboard.findUnique({
+		where : {userId},
+	})
+
+	if (actuaValue) {
+		if(actuaValue.value > value) return actuaValue;
+	}
+
+	return await prisma.scoreboard.upsert({
+		create : {
+			userId: userId,
+			value : value
+		},
+		where: { userId: userId },
+		update: {
+			value: value,
+		},
+	});
 };
 const deleteScore = async (id: number) => {
-    return await prisma.scoreboard.delete({
-			where: { id }
-		});
+	return await prisma.scoreboard.delete({
+		where: { id },
+	});
 };
 
 export default {
