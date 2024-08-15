@@ -1,4 +1,4 @@
-import Button from "./Button";
+import LoginButton from "./LoginButton";
 import Logo from "./Logo";
 import Link from "next/link";
 
@@ -22,13 +22,10 @@ const Navbar = () => {
 									<p>Leaderboard</p>
 								</Link>
 							</li>
-							<li>
-								<Link href="/contacts">
-									<p>Contacts</p>
-								</Link>
-							</li>
 						</ul>
-						<Button />
+						<Link href="/login">
+							<LoginButton />
+						</Link>
 					</div>
 				</div>
 			</div>

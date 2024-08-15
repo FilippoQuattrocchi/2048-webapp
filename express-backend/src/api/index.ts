@@ -2,7 +2,9 @@
 import express, { Express, Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import ScoreRouter from "../routes/score.route";
+import AuthRouter from "../routes/auth.router";
 import dotenv from "dotenv";
+import cors from "cors";
 
 export const prisma = new PrismaClient();
 
@@ -11,9 +13,16 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT || 3000;
 
+//Cors settings
+const corsOptions = {
+	origin: process.env.NEXT_ORIGIN,
+};
+
 async function main() {
 	app.use(express.json());
+	app.use(cors(corsOptions));
 	app.use("/api/v1/score", ScoreRouter);
+	app.use("/api/v1/auth", AuthRouter);
 	app.get("/", (req: Request, res: Response) => {
 		res.send("Express + TypeScript Server");
 	});

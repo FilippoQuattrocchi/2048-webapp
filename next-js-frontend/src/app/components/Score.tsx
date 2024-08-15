@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ScoreType } from "../lib/Definition";
 type Props ={
     scoreValue: number
@@ -8,6 +8,10 @@ type Props ={
 const Button = ({ scoreValue }: Props) => {
     
     const [useScore, setScore] = useState(scoreValue);
+
+	useEffect(() => {
+		setScore(scoreValue);
+	}, [scoreValue]);
     
 	return (
 		<>

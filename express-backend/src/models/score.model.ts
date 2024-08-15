@@ -10,7 +10,13 @@ const createScore = async (userId: number,value: number) => {
 };
 
 const selectAllScore = async () => {
-	return await prisma.scoreboard.findMany();
+	return await prisma.scoreboard.findMany({
+		orderBy: {value : 'desc'},
+		take:20,
+		include : {
+			user:true
+		}
+	});
 };
 const getScore = async (id: number) => {
     return await prisma.scoreboard.findUnique({
