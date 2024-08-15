@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Button from "./Button";
+import Button from "./LoginButton";
 import LogoImg from "../../../../public/icons/assembly.png";
 
 const Logo = () => {

@@ -2,6 +2,7 @@
 import express, { Express, Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import ScoreRouter from "../routes/score.route";
+import AuthRouter from "../routes/auth.router";
 import dotenv from "dotenv";
 
 export const prisma = new PrismaClient();
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3000;
 async function main() {
 	app.use(express.json());
 	app.use("/api/v1/score", ScoreRouter);
+	app.use("/api/v1/auth", AuthRouter);
 	app.get("/", (req: Request, res: Response) => {
 		res.send("Express + TypeScript Server");
 	});
