@@ -12,7 +12,7 @@ const Cell = ({ value }: Props) => {
 	useEffect(() => {
 		// setValue(value);
 		const className =
-			"justify-center items-center basis-1/4 w-20 h-48 border-4"+ styles.game_cell;
+			"justify-center items-center basis-1/4 w-20 h-48 border-4 "+ styles.game_cell;
 
 		if (numberImageAssociation[value] !== undefined) {
 			setCellElement(
