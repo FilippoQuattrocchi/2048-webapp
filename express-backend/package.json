@@ -6,7 +6,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "npm install && npx tsc && npm run migrate",
 		"start": "node dist/api/index.js",
-		"dev": "nodemon src/index.ts",
+		"dev": "nodemon src/api/index.ts",
 		"migrate": "npx prisma generate && prisma migrate dev",
 		"postmigrate": "npx prisma db seed",
 		"vercel-build": "prisma generate && prisma migrate deploy && tsc"
